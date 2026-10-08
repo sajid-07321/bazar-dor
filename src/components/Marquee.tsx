@@ -56,7 +56,7 @@ const Marquee = async () => {
                   : "text-green-500"
               }
             >
-               {item.change.dir === "up" ? "🔺" : "▼"}{" "}
+               {item.change.dir === "up" ? "▲" : "▼"}{" "}
               {toBanglaNumber(item.change.pct)}%
             </span>
 
