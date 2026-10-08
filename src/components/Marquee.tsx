@@ -25,12 +25,13 @@ const Marquee = async () => {
     const headLines = data
     
     return (
-        <div className="border border-gray-300 py-1">
+        <div className="border border-gray-300 py-1 bg-[#FAFCFA]">
            <MarqueeText direction="left"
            duration={10}>
 
-                  {headLines.map((item: HeadlineItem) => (
-          <span key={item.id} className="mx-5">
+                 {[...headLines, ...headLines].map(
+                  (item:HeadlineItem, index) => ( 
+                    <span key={`${item.id}-${index}`} className="mx-5">
 
             {/* Logo */}
             <span className="mr-2">
