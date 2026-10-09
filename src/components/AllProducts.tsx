@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 const toBanglaNumber = (number: number) => {
   return number.toString().replace(/\d/g, (digit) => "০১২৩৪৫৬৭৮৯"[Number(digit)]);
@@ -5,8 +6,10 @@ const toBanglaNumber = (number: number) => {
 
 const AllProducts = async () => {
 
-     const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products")
+     const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products")
   const data = await res.json()
+  console.log(data);
+  
 
     return (
         <section className="container mx-auto mt-10 pb-10">
@@ -18,8 +21,17 @@ const AllProducts = async () => {
           মোট ৩৩ টি পণ্য দেখানো হচ্ছে
         </p>
 
+ 
         <div className="grid grid-cols-3 gap-4">
+         
           {data.map((item: any) => (
+
+            <Link
+            key={item.id}
+            href={`/details/${item.slug}`}
+            className="block"
+            >
+           
             <div
               key={item.id}
               className="bg-[#FAFCFA] rounded-2xl p-5"
@@ -51,7 +63,8 @@ const AllProducts = async () => {
                   </p>
                 </div>
 
-               <span
+               <div className="bg-gray-100 rounded-full px-3 text-sm py-4">
+                <span
                
               className={
                 item.change.dir === "up"
@@ -63,11 +76,16 @@ const AllProducts = async () => {
                {item.change.dir === "up" ? "▲" : "▼"}{" "}
               {toBanglaNumber(item.change.pct)}%
             </span>
+               </div>
               </div>
               
             </div>
+          
+          </Link>
           ))}
+           
         </div>
+            
       </section>
 
     );

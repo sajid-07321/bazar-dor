@@ -6,7 +6,7 @@ import Image from "next/image";
 export default async function Home() {
   return (
     <div>
-      <div className="container mx-auto flex justify-between bg-[#FAFCFA] mt-5 rounded-3xl">
+      <div className="container mx-auto flex justify-between bg-[#FAFCFA] mt-8 rounded-3xl">
         {/* hero banner */}
         <div className="mt-5 pl-6 space-y-6">
           {/* left side */}

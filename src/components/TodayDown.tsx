@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 const toBanglaNumber = (number: number) => {
@@ -7,7 +8,7 @@ const toBanglaNumber = (number: number) => {
 const TodayDown = async () => {
 
 
-    const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products")
+    const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products")
   const data = await res.json()
 
 
@@ -23,6 +24,11 @@ const TodayDown = async () => {
 
         <div className="grid grid-cols-3 gap-4">
           {todayDownPrice.map((item: any) => (
+           
+           <Link
+           key={item.id}
+           href={`/details/${item.slug}`}>
+
             <div
               key={item.id}
               className="bg-[#FAFCFA] rounded-2xl p-5"
@@ -54,11 +60,12 @@ const TodayDown = async () => {
                   </p>
                 </div>
 
-                <span className="text-green-500 bg-green-100 rounded-full px-3 py-1 text-sm py-4">
+                <span className="text-green-500 bg-gray-100 rounded-full px-3 py-1 text-sm py-4">
                   ▼ {toBanglaNumber(item.change.pct)}%
                 </span>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </section>
