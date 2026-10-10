@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import NavLinks from "@/components/NavLinks";
 import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const notoSerifBengali = Noto_Serif_Bengali({ 
   subsets: ["latin", "bengali"],
@@ -29,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
        <Marquee/>
       {children}
       <Footer/>
+        <Toaster />
       </body>
     </html>
   );

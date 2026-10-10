@@ -1,6 +1,7 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 
 const UserInfo = () => {
   const { data: session } = authClient.useSession();
@@ -28,8 +29,12 @@ const UserInfo = () => {
         </div>
       ) : (
         <div>
+         <Link href={'/signin'}>
           <button className="btn">সাইন ইন</button>
+         </Link>
+          <Link href={'/signup'}>
           <button className="btn bg-green-600 text-white">সাইন আপ</button>
+          </Link>
         </div>
       )}
     </div>

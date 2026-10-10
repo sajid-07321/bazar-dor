@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 
 const SignUpPage = () => {
@@ -18,13 +19,14 @@ const SignUpPage = () => {
         })
 
         if(data){
+            toast.success("আমাদের ওয়েব সাইট এ আপনাকে স্বাগতম")
             redirect("/")
             console.log(data);
         }
 
         if(error){
+            toast.error("কিছু একটা ভুল হয়েছে পুনরায় চেষ্টা করুন")
             console.log(error);
-            
         }
         
     }
