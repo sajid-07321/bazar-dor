@@ -1,5 +1,6 @@
 import Image from "next/image";
 import NavLinks from "./NavLinks";
+import UserInfo from "./UserInfo";
 
 const Header = () => {
   return (
@@ -31,10 +32,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div>
-          <button className="btn">সাইন ইন</button>
-          <button className="btn bg-green-600 text-white">সাইন আপ</button>
-        </div>
+       <UserInfo/>
       </div>
 
       {/* Full width border */}
