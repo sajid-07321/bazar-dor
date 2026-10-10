@@ -25,7 +25,7 @@ export default async function SingleProduct({ params }: PageProps) {
   const { categoryId } = await params;
 
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
+    "https://openapi.programming-hero.com/api/bazardor/products",
     { cache: "no-store" }
   );
 

@@ -8,12 +8,12 @@ const toBanglaNumber = (number: number) => {
 
 const TodayUp = async () => {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/products",
+    "https://openapi.programming-hero.com/api/bazardor/products",
   );
   const data = await res.json();
 
   const todayUpPrice = data
-    .filter((item) => item.change?.dir === "up")
+    .filter((item: { change?: { dir?: string } | null }) => item.change?.dir === "up")
     .slice(0, 6);
   console.log(todayUpPrice);
 
@@ -22,7 +22,14 @@ const TodayUp = async () => {
       <h2 className="text-2xl font-bold mb-5">🔺 আজ দাম বেড়েছে</h2>
 
       <div className="grid grid-cols-3 gap-4">
-        {todayUpPrice.map((item: any) => (
+        {todayUpPrice.map((item: {
+          id: string | number;
+          slug: string;
+          categoryIcon: string;
+          categoryNameBn: string;
+          today: number | string;
+          change: { pct: number };
+        }) => (
           <Link
           key={item.id}
           href={`/details/${item.slug}`}>

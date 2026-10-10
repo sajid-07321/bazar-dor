@@ -1,5 +1,16 @@
 import Link from "next/link";
 
+interface IProduct {
+  id: string | number;
+  slug: string;
+  change?: {
+    dir?: string;
+    pct: number | string;
+  };
+  categoryIcon: string;
+  categoryNameBn: string;
+  today: number | string;
+};
 
 const toBanglaNumber = (number: number) => {
   return number.toString().replace(/\d/g, (digit) => "০১২৩৪৫৬৭৮৯"[Number(digit)]);
@@ -8,8 +19,8 @@ const toBanglaNumber = (number: number) => {
 const TodayDown = async () => {
 
 
-    const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products")
-  const data = await res.json()
+    const res = await fetch("https://openapi.programming-hero.com/api/bazardor/products")
+  const data = (await res.json()) as IProduct[]
 
 
   const todayDownPrice = data.filter((item) => item.change?.dir === "down")
@@ -23,7 +34,7 @@ const TodayDown = async () => {
         </h2>
 
         <div className="grid grid-cols-3 gap-4">
-          {todayDownPrice.map((item: any) => (
+          {todayDownPrice.map((item) => (
            
            <Link
            key={item.id}
@@ -61,7 +72,7 @@ const TodayDown = async () => {
                 </div>
 
                 <span className="text-green-500 bg-gray-100 rounded-full px-3 py-1 text-sm py-4">
-                  ▼ {toBanglaNumber(item.change.pct)}%
+                  ▼ {toBanglaNumber(Number(item.change?.pct ?? 0))}%
                 </span>
               </div>
             </div>
